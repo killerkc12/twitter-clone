@@ -66,7 +66,7 @@ function Input() {
 
     return (
         <div className={`border-b border-gray-700 p-3 flex
-            space-x-3 overflow-y-scroll
+            space-x-3 
             ${loading && "opacity-60"}
             `}>
             <img src={session.user.image} alt="icon" 
