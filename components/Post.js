@@ -11,7 +11,7 @@ import {
     HeartIcon as HeartIconFilled,
     ChatIcon as ChatIconFilled,
   } from "@heroicons/react/solid";
-import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
   import { useSession } from "next-auth/react";
   import { useRouter } from "next/router";
   import { useEffect, useState } from "react";
@@ -28,6 +28,15 @@ function Post({id, post, postPage}) {
     const [likes, setLikes] = useState([]);
     const [liked, setLiked] = useState(false);
     const router = useRouter();
+
+    useEffect(() => 
+        onSnapshot(
+            collection(db, "posts", id, "likes"),
+                (snapshot) => 
+                    setLikes(snapshot.docs)
+        ),
+        [db, id]
+    )
 
     useEffect(
         () => 
@@ -83,7 +92,7 @@ function Post({id, post, postPage}) {
                         </div>{" "}
                         .{" "}
                         <span className="hover:underline text-sm sm:text-[15px]">
-                            {/* <Moment fromNow>{post?.timestamp?.toDate()}</Moment> */}
+                            <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
                         </span>
                         {
                             !postPage && (
