@@ -64,7 +64,7 @@ function PostPage({trendingResults, followResults, providers}) {
                 >
                 <Sidebar/>
                 <div className="flex-grow border-l border-r border-gray-700
-                    max-w-2xl sm:ml-[73px] xl:ml[370px]"
+                    max-w-2xl sm:ml-[73px] xl:ml-[370px]"
                 >
                     <div className="flex items-center px-1.5 py-2 border-b
                         border-gray-700 text-[#d9d9d9] font-semibold
